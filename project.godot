@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Project2"
-run/main_scene="res://world/main.tscn"
+run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+cryptid=""
 
 [input]
 
@@ -54,3 +58,7 @@ enter={
 2d_physics/layer_2="Ground"
 2d_physics/layer_3="Decoration"
 2d_physics/layer_4="PickUpItem"
+
+[rendering]
+
+renderer/rendering_method="mobile"
