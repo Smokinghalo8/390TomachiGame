@@ -5,7 +5,6 @@ var danger
 var elementArray = []
 var coins
 var coinLimit
-var origin = Vector2(0,0)
 @onready var wendigo = preload("res://Cryptids/wendigo.tscn")
 
 
@@ -20,6 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
 	
 
 
@@ -36,13 +36,20 @@ func getCoinRate():
 
 
 func _on_timer_timeout() -> void:
-	if coins <= coinLimit:
+	getCoinRate()
+	if coins < coinLimit:
 		coins += coinRate
-		print(coins)
+		print("Coins: " + str(coins))
 	else:
 		pass
 
-func instCryptid(pos, thing):
-	var stuff = thing.instantiate()
-	stuff.position = pos
-	get_node("/root/WendigoBiome").add_child(stuff)
+func instCryptid(name, branch):
+	name = wendigo.instantiate()
+	name.position = Vector2(192,160)
+	get_node("/root/" + branch).add_child(name)
+	getElements()
+
+
+func _on_make_crytpid_pressed() -> void:
+	instCryptid("Wendigo1", "Map/WendigoBiome")
+	$MakeCryptid.visible = false

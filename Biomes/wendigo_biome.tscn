@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dryeg0hq3owkm" path="res://tilesets/tileset.tres" id="1_p8n41"]
 
 [node name="WendigoBiome" type="Node2D"]
+position = Vector2(-192, -160)
 script = ExtResource("1_3nad2")
 
 [node name="Grass" type="TileMapLayer" parent="."]
@@ -17,4 +18,30 @@ tile_set = ExtResource("1_p8n41")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="MakeCryptid" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MakeCrytpid" type="Button" parent="MakeCryptid"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 5.0
+offset_right = 442.0
+offset_bottom = 62.0
+text = "Make Wendigo"
+
+[node name="InfoLabel" type="Label" parent="MakeCryptid"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = -90.0
+offset_right = 410.0
+offset_bottom = -28.0
+text = "Now that you have your first biome
+you need to create your first Cryptid!
+Press the button bellow to make it!"
+horizontal_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="MakeCryptid/MakeCrytpid" to="." method="_on_make_crytpid_pressed"]

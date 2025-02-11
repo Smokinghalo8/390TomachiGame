@@ -30,4 +30,47 @@ tile_map_data = PackedByteArray("AAA2AP//AwAMABUAAAA2AP7/AwAMABQAAAA2AP3/AwAMABQ
 tile_set = ExtResource("1_o83te")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(440, 83)
+
+[node name="StartButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wendigo" type="Button" parent="StartButtons"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -84.0
+offset_right = 89.0
+offset_bottom = -21.0
+theme_override_font_sizes/font_size = 40
+text = "Wendigo"
+
+[node name="Mothman" type="Button" parent="StartButtons"]
+layout_mode = 0
+offset_left = -97.0
+offset_top = 52.0
+offset_right = 100.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 40
+text = "Mothman"
+
+[node name="Nessie" type="Button" parent="StartButtons"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = 195.0
+offset_right = 70.0
+offset_bottom = 258.0
+theme_override_font_sizes/font_size = 40
+text = "Nessie"
+
+[node name="Label" type="Label" parent="StartButtons"]
+layout_mode = 0
+offset_left = -428.0
+offset_top = -251.0
+offset_right = 467.0
+offset_bottom = -114.0
+theme_override_font_sizes/font_size = 70
+text = "Pick your starting Cryptid!"
+
+[connection signal="pressed" from="StartButtons/Wendigo" to="." method="_on_wendigo_pressed"]
