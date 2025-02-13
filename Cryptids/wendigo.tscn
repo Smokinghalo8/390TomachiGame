@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vx4s10pbqrnu"]
+
+[ext_resource type="Texture2D" path="res://wendigo.png" id="1_x3pq2"]
+[ext_resource type="Script" path="res://Cryptids/wendigo.gd" id="2_744st"]
+
+[node name="Wendigo" type="Sprite2D" groups=["cryptid"]]
+position = Vector2(37, 37)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_x3pq2")
+script = ExtResource("2_744st")
+
+[node name="HealthTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
