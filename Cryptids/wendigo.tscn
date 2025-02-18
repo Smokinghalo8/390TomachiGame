@@ -12,4 +12,10 @@ script = ExtResource("2_744st")
 [node name="HealthTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="moveTimer" type="Timer" parent="."]
+
+[node name="directionTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="moveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="directionTimer" to="." method="_on_direction_timer_timeout"]

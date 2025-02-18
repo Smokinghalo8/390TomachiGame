@@ -26,22 +26,25 @@ offset_bottom = 40.0
 
 [node name="MakeCrytpid" type="Button" parent="MakeCryptid"]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 5.0
-offset_right = 442.0
-offset_bottom = 62.0
+offset_left = 104.0
+offset_top = -92.0
+offset_right = 274.0
+offset_bottom = -35.0
 text = "Make Wendigo"
 
 [node name="InfoLabel" type="Label" parent="MakeCryptid"]
 layout_mode = 0
-offset_left = 209.0
-offset_top = -90.0
-offset_right = 410.0
-offset_bottom = -28.0
+offset_left = 49.0
+offset_top = -215.0
+offset_right = 334.0
+offset_bottom = -140.0
 text = "Now that you have your first biome
 you need to create your first Cryptid!
 Press the button bellow to make it!"
 horizontal_alignment = 1
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 320)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="MakeCryptid/MakeCrytpid" to="." method="_on_make_crytpid_pressed"]
