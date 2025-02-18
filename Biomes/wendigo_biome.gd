@@ -19,8 +19,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-	
 
 
 func getElements():
@@ -33,8 +31,6 @@ func getCoinRate():
 			coinRate += i.worth
 
 
-
-
 func _on_timer_timeout() -> void:
 	getCoinRate()
 	if coins < coinLimit:
@@ -42,6 +38,7 @@ func _on_timer_timeout() -> void:
 		print("Coins: " + str(coins))
 	else:
 		pass
+
 
 func instCryptid(name, branch):
 	name = wendigo.instantiate()

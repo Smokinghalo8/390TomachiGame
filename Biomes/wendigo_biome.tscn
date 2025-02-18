@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bqb0qk13flace"]
+[gd_scene load_steps=4 format=4 uid="uid://bqb0qk13flace"]
 
 [ext_resource type="Script" path="res://Biomes/wendigo_biome.gd" id="1_3nad2"]
 [ext_resource type="TileSet" uid="uid://dryeg0hq3owkm" path="res://tilesets/tileset.tres" id="1_p8n41"]
+[ext_resource type="AudioStream" uid="uid://di16v3cyxjwua" path="res://Assets/Musics/16 - Melancholia.ogg" id="3_k7wl0"]
 
 [node name="WendigoBiome" type="Node2D"]
 position = Vector2(-192, -160)
@@ -43,8 +44,10 @@ you need to create your first Cryptid!
 Press the button bellow to make it!"
 horizontal_alignment = 1
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 320)
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MakeCryptid"]
+stream = ExtResource("3_k7wl0")
+autoplay = true
+parameters/looping = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="MakeCryptid/MakeCrytpid" to="." method="_on_make_crytpid_pressed"]
