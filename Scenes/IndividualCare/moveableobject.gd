@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var moveable = false
 @onready var initPos = self.position
 @onready var sprite = $Sprite2D
+@onready var mousePosition
 
 @export var texture: Texture
 
@@ -13,7 +14,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if moveable:
-		self.position = get_global_mouse_position()
+		mousePosition = get_global_mouse_position() 
+		self.position = Vector2(mousePosition.x +360,mousePosition.y)
 	else:
 		self.position = initPos
 	

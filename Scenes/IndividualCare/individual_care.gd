@@ -36,13 +36,11 @@ func _on_exit_button_pressed() -> void:
 	self.queue_free()
 
 
-func _on_towel_mouse_entered() -> void:
-	print("test'")
+
 
 
 func _on_cryptid_obj_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print(body.get_groups())
-	
+
 	if body.is_in_group("bottle"):
 		
 		IncreaseWater()

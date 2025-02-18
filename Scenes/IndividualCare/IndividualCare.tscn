@@ -31,9 +31,11 @@ outline_color = Color(0, 0, 0, 1)
 radius = 155.708
 
 [node name="IndividualCare" type="Node2D"]
+z_index = 3
 script = ExtResource("1_2diwp")
 
 [node name="Ui" type="Control" parent="."]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
@@ -157,7 +159,7 @@ label_settings = SubResource("LabelSettings_v4fcj")
 position = Vector2(478, 219)
 
 [node name="Sprite2D" type="Sprite2D" parent="CryptidObj"]
-scale = Vector2(0.3, 0.281)
+scale = Vector2(10, 9.367)
 texture = ExtResource("2_qem84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CryptidObj"]
