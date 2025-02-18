@@ -12,11 +12,11 @@ var dookieLevel;
 
 
 func IncreaseWater():
-	pass
+	HydrationBar.value += 30
 func IncreaseHappy():
-	pass
-func IncreaseDookie():
-	pass
+	HappinessBar.value += 30
+func IncreaseHygiene():
+	HygeieneBar.value += 30
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -38,3 +38,17 @@ func _on_exit_button_pressed() -> void:
 
 func _on_towel_mouse_entered() -> void:
 	print("test'")
+
+
+func _on_cryptid_obj_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print(body.get_groups())
+	
+	if body.is_in_group("bottle"):
+		
+		IncreaseWater()
+	elif  body.is_in_group("hand"):
+		
+		IncreaseHappy()
+	elif  body.is_in_group("towel"):
+		
+		IncreaseHygiene()

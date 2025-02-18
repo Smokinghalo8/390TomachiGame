@@ -1,10 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://bn63wn2er5kai"]
 
 [ext_resource type="Script" path="res://Scenes/IndividualCare/individual_care.gd" id="1_2diwp"]
-[ext_resource type="Texture2D" uid="uid://bxcvbuto423al" path="res://icon.svg" id="1_gb45g"]
-[ext_resource type="Script" path="res://Scenes/IndividualCare/hand.gd" id="3_j2ryi"]
-[ext_resource type="Script" path="res://Scenes/IndividualCare/towel.gd" id="4_wcqxf"]
-[ext_resource type="Script" path="res://Scenes/IndividualCare/water_bottle.gd" id="5_sn4s2"]
+[ext_resource type="Texture2D" uid="uid://dm3tlf7r4h6cm" path="res://wendigo.png" id="2_qem84"]
+[ext_resource type="PackedScene" uid="uid://514qjned7tsy" path="res://Scenes/IndividualCare/moveableobject.tscn" id="3_oddn7"]
+[ext_resource type="Texture2D" uid="uid://ce1k1x1vgjggy" path="res://Assets/bottle.png" id="4_k3ijd"]
+[ext_resource type="Texture2D" uid="uid://d0a1f6pnmm8sv" path="res://Assets/hand.png" id="5_7arel"]
+[ext_resource type="Texture2D" uid="uid://ddn0wfs7rg3bk" path="res://Assets/towel.webp" id="6_3g2k4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdfbg"]
 
@@ -21,14 +22,13 @@ bg_color = Color(0.730852, 0.496658, 0.7945, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnvg4"]
 bg_color = Color(0.824473, 0.515305, 0.288639, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_v4fcj"]
+font_color = Color(0.466124, 0.215346, 0.154226, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_l70rs"]
 radius = 155.708
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tw2tg"]
-radius = 45.7056
-
-[sub_resource type="LabelSettings" id="LabelSettings_01uvr"]
-font_color = Color(1, 0.07, 0.07, 1)
 
 [node name="IndividualCare" type="Node2D"]
 script = ExtResource("1_2diwp")
@@ -38,6 +38,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 648.0
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="BackgroundColors" type="Control" parent="Ui"]
@@ -45,10 +46,11 @@ z_index = -1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-metadata/_edit_lock_ = true
+scale = Vector2(0.719999, 1)
 
 [node name="BackgroundColor1" type="ColorRect" parent="Ui/BackgroundColors"]
 z_index = -1
+layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 550.0
 mouse_filter = 2
@@ -56,6 +58,7 @@ color = Color(0.70903, 0.6071, 0.376785, 1)
 
 [node name="BackgroundColor2" type="ColorRect" parent="Ui/BackgroundColors"]
 z_index = -1
+layout_mode = 0
 offset_left = 12.5
 offset_top = 12.5
 offset_right = 987.5
@@ -71,10 +74,10 @@ offset_bottom = 40.0
 
 [node name="HydrationBar" type="ProgressBar" parent="Ui/Bars"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 502.0
-offset_right = 297.0
-offset_bottom = 529.0
+offset_left = 15.0
+offset_top = 50.0
+offset_right = 285.0
+offset_bottom = 77.0
 theme_override_styles/background = SubResource("StyleBoxFlat_gdfbg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1sk50")
 value = 100.0
@@ -90,10 +93,10 @@ horizontal_alignment = 1
 
 [node name="HappinessBar" type="ProgressBar" parent="Ui/Bars"]
 layout_mode = 0
-offset_left = 368.0
-offset_top = 502.0
-offset_right = 638.0
-offset_bottom = 529.0
+offset_left = 17.0
+offset_top = 209.0
+offset_right = 287.0
+offset_bottom = 236.0
 theme_override_styles/background = SubResource("StyleBoxFlat_bqh4x")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ypqww")
 value = 100.0
@@ -109,10 +112,10 @@ horizontal_alignment = 1
 
 [node name="HygeineBar" type="ProgressBar" parent="Ui/Bars"]
 layout_mode = 0
-offset_left = 705.0
-offset_top = 503.0
-offset_right = 975.0
-offset_bottom = 530.0
+offset_left = 23.0
+offset_top = 350.0
+offset_right = 293.0
+offset_bottom = 377.0
 theme_override_styles/background = SubResource("StyleBoxFlat_76egp")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pnvg4")
 value = 100.0
@@ -140,146 +143,37 @@ offset_bottom = 43.0
 text = "Exit
 "
 
-[node name="TextEdit" type="TextEdit" parent="Ui/Buttons"]
+[node name="Label" type="Label" parent="Ui"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 50.0
-offset_right = 116.0
-offset_bottom = 80.0
+offset_left = 74.0
+offset_top = 5.0
+offset_right = 452.0
+offset_bottom = 28.0
+scale = Vector2(1.46796, 1.41936)
+text = "Drag the item over the monster to keep it happy!"
+label_settings = SubResource("LabelSettings_v4fcj")
 
 [node name="CryptidObj" type="Area2D" parent="."]
 position = Vector2(478, 219)
 
 [node name="Sprite2D" type="Sprite2D" parent="CryptidObj"]
-scale = Vector2(1.93333, 2.00141)
-texture = ExtResource("1_gb45g")
+scale = Vector2(0.3, 0.281)
+texture = ExtResource("2_qem84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CryptidObj"]
 shape = SubResource("CircleShape2D_l70rs")
 
-[node name="Hand" type="CharacterBody2D" parent="."]
-position = Vector2(489, 456)
-input_pickable = true
-script = ExtResource("3_j2ryi")
+[node name="waterBottle" parent="." groups=["bottle"] instance=ExtResource("3_oddn7")]
+position = Vector2(121, 138)
+texture = ExtResource("4_k3ijd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand"]
-shape = SubResource("CircleShape2D_tw2tg")
+[node name="hand" parent="." groups=["hand"] instance=ExtResource("3_oddn7")]
+position = Vector2(133, 295)
+texture = ExtResource("5_7arel")
 
-[node name="ShittyTextures" type="Control" parent="Hand"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect2" type="ColorRect" parent="Hand/ShittyTextures"]
-offset_left = -32.0
-offset_top = -28.0
-offset_right = -20.0
-offset_bottom = 3.0
-mouse_filter = 2
-color = Color(0.601537, 0.479201, 0.296075, 1)
-
-[node name="ColorRect" type="ColorRect" parent="Hand/ShittyTextures"]
-offset_left = -34.0
-offset_top = 2.0
-offset_right = 39.0
-offset_bottom = 33.0
-mouse_filter = 2
-color = Color(0.601537, 0.479201, 0.296075, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="Hand/ShittyTextures"]
-offset_left = -13.0
-offset_top = -27.0
-offset_right = -1.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.601537, 0.479201, 0.296075, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="Hand/ShittyTextures"]
-offset_left = 8.0
-offset_top = -26.0
-offset_right = 20.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.601537, 0.479201, 0.296075, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="Hand/ShittyTextures"]
-offset_left = 29.0
-offset_top = -13.0
-offset_right = 41.0
-offset_bottom = 18.0
-mouse_filter = 2
-color = Color(0.601537, 0.479201, 0.296075, 1)
-
-[node name="Towel" type="CharacterBody2D" parent="."]
-position = Vector2(841, 443)
-input_pickable = true
-script = ExtResource("4_wcqxf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Towel"]
-shape = SubResource("CircleShape2D_tw2tg")
-
-[node name="Control" type="Control" parent="Towel"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Towel/Control"]
-layout_mode = 0
-offset_left = -32.0
-offset_top = -29.0
-offset_right = 31.0
-offset_bottom = 24.0
-mouse_filter = 2
-color = Color(0.69, 0.69, 0.69, 1)
-
-[node name="Label" type="Label" parent="Towel/Control"]
-layout_mode = 0
-offset_left = -26.0
-offset_top = -27.0
-offset_right = 45.0
-offset_bottom = 22.0
-text = "An 
-Towle
-"
-label_settings = SubResource("LabelSettings_01uvr")
-
-[node name="WaterBottle" type="CharacterBody2D" parent="."]
-position = Vector2(245, 572)
-input_pickable = true
-script = ExtResource("5_sn4s2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterBottle"]
-shape = SubResource("CircleShape2D_tw2tg")
-
-[node name="ShittyTextures" type="Control" parent="WaterBottle"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="WaterBottle/ShittyTextures"]
-layout_mode = 0
-offset_left = -25.0
-offset_top = -28.0
-offset_right = 24.0
-offset_bottom = 40.0
-mouse_filter = 2
-color = Color(0.342322, 0.533057, 0.791347, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="WaterBottle/ShittyTextures"]
-layout_mode = 0
-offset_left = -20.0
-offset_top = -43.0
-offset_right = 20.0
-offset_bottom = -24.0
+[node name="towel" parent="." groups=["towel"] instance=ExtResource("3_oddn7")]
+position = Vector2(127, 441)
+texture = ExtResource("6_3g2k4")
 
 [connection signal="pressed" from="Ui/Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="input_event" from="Hand" to="Hand" method="_on_input_event"]
-[connection signal="mouse_entered" from="Hand" to="Hand" method="_on_mouse_entered"]
-[connection signal="input_event" from="Towel" to="Towel" method="_on_input_event"]
-[connection signal="mouse_entered" from="Towel" to="Towel" method="_on_mouse_entered"]
-[connection signal="mouse_shape_entered" from="Towel" to="Towel" method="_on_mouse_shape_entered"]
-[connection signal="input_event" from="WaterBottle" to="WaterBottle" method="_on_input_event"]
-[connection signal="mouse_entered" from="WaterBottle" to="WaterBottle" method="_on_mouse_entered"]
+[connection signal="body_shape_entered" from="CryptidObj" to="." method="_on_cryptid_obj_body_shape_entered"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://514qjned7tsy"]
+
+[ext_resource type="Script" path="res://Scenes/IndividualCare/moveableobject.gd" id="1_0xaw4"]
+[ext_resource type="Texture2D" uid="uid://bxcvbuto423al" path="res://icon.svg" id="2_wup6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l33j3"]
+radius = 25.1794
+
+[node name="Moveableobject" type="CharacterBody2D"]
+input_pickable = true
+script = ExtResource("1_0xaw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l33j3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.413913, 0.4)
+texture = ExtResource("2_wup6b")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
