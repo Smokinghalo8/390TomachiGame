@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cowy05tev1bag"]
+[gd_scene load_steps=4 format=3 uid="uid://cowy05tev1bag"]
 
-[ext_resource type="Texture2D" uid="uid://dm3tlf7r4h6cm" path="res://wendigo.png" id="1_x3pq2"]
 [ext_resource type="Script" path="res://Cryptids/wendigo.gd" id="2_744st"]
+[ext_resource type="Texture2D" uid="uid://crg2e74tqta37" path="res://project2/wendigo.png" id="2_q4yfe"]
 
+<<<<<<< Updated upstream
 [node name="Wendigo" type="Sprite2D" groups=["cryptid"]]
+=======
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sto53"]
+size = Vector2(1000, 1133.33)
+
+[node name="Wendigo" type="CharacterBody2D" groups=["cryptid"]]
+position = Vector2(37, 37)
+>>>>>>> Stashed changes
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("1_x3pq2")
+input_pickable = true
 script = ExtResource("2_744st")
 
 [node name="HealthTimer" type="Timer" parent="."]
@@ -15,6 +23,14 @@ autostart = true
 
 [node name="directionTimer" type="Timer" parent="."]
 
+[node name="WendiCol" type="CollisionShape2D" parent="."]
+position = Vector2(66.6669, 66.6671)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sto53")
+
+[node name="WendiSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_q4yfe")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
-[connection signal="timeout" from="moveTimer" to="." method="_on_move_timer_timeout"]
-[connection signal="timeout" from="directionTimer" to="." method="_on_direction_timer_timeout"]
