@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://crg2e74tqta37" path="res://project2/wendigo.png" id="2_q4yfe"]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [node name="Wendigo" type="Sprite2D" groups=["cryptid"]]
 =======
+=======
+>>>>>>> Stashed changes
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sto53"]
 size = Vector2(1000, 1133.33)
 
