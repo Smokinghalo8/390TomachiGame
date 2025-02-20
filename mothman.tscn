@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://4x58htctexrd"]
+
+[ext_resource type="Texture2D" uid="uid://d3mk620wnvwjm" path="res://mothman.png" id="1_m11hw"]
+[ext_resource type="Script" path="res://mothman.gd" id="2_yutdx"]
+
+[node name="Mothman" type="Sprite2D" groups=["cryptid"]]
+process_mode = 4
+texture = ExtResource("1_m11hw")
+script = ExtResource("2_yutdx")
+
+[node name="HealthTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="moveTimer" type="Timer" parent="."]
+
+[node name="directionTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="moveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="directionTimer" to="." method="_on_direction_timer_timeout"]

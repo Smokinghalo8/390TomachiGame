@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var wBiome = preload("res://Biomes/wendigo_biome.tscn")
 var origin = Vector2(-192,-160)
+var totalCoins
 
 
 
@@ -21,5 +22,4 @@ func instBiome(pos, thing, name, branch):
 
 
 func _on_wendigo_pressed() -> void:
-	instBiome(origin, wBiome, "wBiome1", "Map")
-	$StartButtons.queue_free()
+	get_tree().change_scene_to_file("res://main_map.tscn")

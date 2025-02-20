@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://g0rjs5snqnq6"]
+
+[ext_resource type="Script" path="res://main_map.gd" id="1_2ufo6"]
+[ext_resource type="PackedScene" uid="uid://bqb0qk13flace" path="res://Biomes/wendigo_biome.tscn" id="1_xhvdv"]
+[ext_resource type="PackedScene" uid="uid://6oje5pc67rrf" path="res://Biomes/nessie_biome.tscn" id="2_m71jl"]
+[ext_resource type="PackedScene" uid="uid://bydoracux0cwb" path="res://Biomes/mothman_biome.tscn" id="3_k3tlv"]
+[ext_resource type="Texture2D" uid="uid://yo0bsk8ljsmq" path="res://Assets/FX/Environment/fog.png" id="4_65aoo"]
+[ext_resource type="Texture2D" uid="uid://cvpwgppl6wxqu" path="res://image-removebg-preview (15).png" id="6_kgbou"]
+
+[node name="MainMap" type="Node2D"]
+script = ExtResource("1_2ufo6")
+
+[node name="WendigoBiome" parent="." instance=ExtResource("1_xhvdv")]
+position = Vector2(-155, -119)
+scale = Vector2(0.75, 0.75)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NessieBiome" parent="." instance=ExtResource("2_m71jl")]
+position = Vector2(-155, 121)
+scale = Vector2(0.75, 0.75)
+
+[node name="MothmanBiome" parent="." instance=ExtResource("3_k3tlv")]
+position = Vector2(-156, -359)
+scale = Vector2(0.75, 0.75)
+
+[node name="Fog" type="Sprite2D" parent="."]
+position = Vector2(-11.5, 240)
+scale = Vector2(1.08302, 0.828767)
+texture = ExtResource("4_65aoo")
+
+[node name="Fog2" type="Sprite2D" parent="."]
+position = Vector2(-12.2066, -238.264)
+scale = Vector2(1.08835, 0.826961)
+texture = ExtResource("4_65aoo")
+
+[node name="Coinage" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -5.0
+offset_top = -3.0
+offset_right = 35.0
+offset_bottom = 37.0
+
+[node name="Coins" type="Label" parent="Coinage"]
+layout_mode = 0
+offset_left = -292.0
+offset_top = -636.0
+offset_right = -197.0
+offset_bottom = -575.0
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="Coin" type="Sprite2D" parent="Coinage"]
+position = Vector2(-327, -607.125)
+scale = Vector2(0.29, 0.27125)
+texture = ExtResource("6_kgbou")
+
+[node name="UnlockNessie" type="Button" parent="."]
+offset_left = -62.0
+offset_top = 219.0
+offset_right = 55.0
+offset_bottom = 273.0
+text = "Unlock Nessie
+200"
+
+[node name="UnlockMothman" type="Button" parent="."]
+offset_left = -73.0
+offset_top = -286.0
+offset_right = 44.0
+offset_bottom = -232.0
+text = "Unlock Mothman
+400"
+
+[connection signal="cashedOut" from="WendigoBiome" to="." method="_on_wendigo_biome_cashed_out"]
+[connection signal="cashedOut" from="NessieBiome" to="." method="_on_nessie_biome_cashed_out"]
+[connection signal="cashedOut" from="MothmanBiome" to="." method="_on_mothman_biome_cashed_out"]
+[connection signal="pressed" from="UnlockNessie" to="." method="_on_unlock_nessie_pressed"]
+[connection signal="pressed" from="UnlockMothman" to="." method="_on_unlock_mothman_pressed"]

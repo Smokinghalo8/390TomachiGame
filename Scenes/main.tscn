@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bqgk4mc6v1xlh"]
+[gd_scene load_steps=6 format=4 uid="uid://bqgk4mc6v1xlh"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_4ou7n"]
 [ext_resource type="Texture2D" uid="uid://bo30ofwe1h7nm" path="res://Assets/Backgrounds/TextureRectBGs/cat.jpg" id="1_cp0v1"]
 [ext_resource type="TileSet" uid="uid://dryeg0hq3owkm" path="res://tilesets/tileset.tres" id="1_o83te"]
 [ext_resource type="AudioStream" uid="uid://0ca7v44odxmm" path="res://Assets/Musics/1 - Adventure Begin.ogg" id="4_juyrj"]
+[ext_resource type="Texture2D" uid="uid://cvpwgppl6wxqu" path="res://image-removebg-preview (15).png" id="5_xl8yt"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_4ou7n")
@@ -48,6 +49,7 @@ theme_override_font_sizes/font_size = 40
 text = "Wendigo"
 
 [node name="Mothman" type="Button" parent="StartButtons"]
+visible = false
 layout_mode = 0
 offset_left = -97.0
 offset_top = 52.0
@@ -57,6 +59,7 @@ theme_override_font_sizes/font_size = 40
 text = "Mothman"
 
 [node name="Nessie" type="Button" parent="StartButtons"]
+visible = false
 layout_mode = 0
 offset_left = -66.0
 offset_top = 195.0
@@ -78,5 +81,25 @@ text = "Pick your starting Cryptid!"
 stream = ExtResource("4_juyrj")
 autoplay = true
 parameters/looping = true
+
+[node name="Coinage" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Coins" type="Label" parent="Coinage"]
+offset_left = -292.0
+offset_top = -636.0
+offset_right = -197.0
+offset_bottom = -575.0
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="Coin" type="Sprite2D" parent="Coinage"]
+position = Vector2(-327, -607.125)
+scale = Vector2(0.29, 0.27125)
+texture = ExtResource("5_xl8yt")
 
 [connection signal="pressed" from="StartButtons/Wendigo" to="." method="_on_wendigo_pressed"]
