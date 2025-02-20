@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://bqb0qk13flace"]
+[gd_scene load_steps=7 format=4 uid="uid://bqb0qk13flace"]
 
 [ext_resource type="Script" path="res://Biomes/wendigo_biome.gd" id="1_3nad2"]
 [ext_resource type="TileSet" uid="uid://dryeg0hq3owkm" path="res://tilesets/tileset.tres" id="1_p8n41"]
 [ext_resource type="AudioStream" uid="uid://di16v3cyxjwua" path="res://Assets/Musics/16 - Melancholia.ogg" id="3_k7wl0"]
 [ext_resource type="PackedScene" uid="uid://cqh0l1qon7lxh" path="res://Scenes/IndividualCare/clickToOpenMenu.tscn" id="4_unrut"]
+[ext_resource type="Texture2D" uid="uid://cvpwgppl6wxqu" path="res://image-removebg-preview (15).png" id="5_mn8s5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y80f1"]
+size = Vector2(54, 24)
 
 [node name="WendigoBiome" type="Node2D"]
 position = Vector2(-192, -160)
@@ -28,18 +32,18 @@ offset_bottom = 40.0
 
 [node name="MakeCrytpid" type="Button" parent="MakeCryptid"]
 layout_mode = 0
-offset_left = 104.0
-offset_top = -92.0
-offset_right = 274.0
-offset_bottom = -35.0
+offset_left = 444.0
+offset_top = 226.0
+offset_right = 614.0
+offset_bottom = 283.0
 text = "Make Wendigo"
 
 [node name="InfoLabel" type="Label" parent="MakeCryptid"]
 layout_mode = 0
-offset_left = 49.0
-offset_top = -215.0
-offset_right = 334.0
-offset_bottom = -140.0
+offset_left = 389.0
+offset_top = 103.0
+offset_right = 674.0
+offset_bottom = 178.0
 text = "Now that you have your first biome
 you need to create your first Cryptid!
 Press the button bellow to make it!"
@@ -51,15 +55,37 @@ autoplay = true
 parameters/looping = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 89.0
-offset_top = -252.0
-offset_right = 313.0
-offset_bottom = -203.0
+offset_left = 429.0
+offset_top = 37.0
+offset_right = 653.0
+offset_bottom = 86.0
 text = "Click me to open care menu!"
 
 [node name="ClickToOpenMenu" parent="." instance=ExtResource("4_unrut")]
-position = Vector2(186, -243)
+position = Vector2(526, 46)
 scale = Vector2(8.01398, -1.01006)
+
+[node name="WendigoCoins" type="Label" parent="."]
+offset_left = 17.0
+offset_top = -5.0
+offset_right = 57.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(8, 10)
+scale = Vector2(0.07125, 0.0725)
+texture = ExtResource("5_mn8s5")
+
+[node name="CoinsButton" type="Area2D" parent="."]
+
+[node name="CoinsButtonColl" type="CollisionShape2D" parent="CoinsButton"]
+position = Vector2(27, 12)
+shape = SubResource("RectangleShape2D_y80f1")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="MakeCryptid/MakeCrytpid" to="." method="_on_make_crytpid_pressed"]
+[connection signal="body_entered" from="CoinsButton" to="." method="_on_coins_button_body_entered"]
+[connection signal="body_exited" from="CoinsButton" to="." method="_on_coins_button_body_exited"]
+[connection signal="input_event" from="CoinsButton" to="." method="_on_coins_button_input_event"]

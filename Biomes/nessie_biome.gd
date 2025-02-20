@@ -17,6 +17,7 @@ func _ready() -> void:
 	danger = 0
 	coinLimit = 500
 	coins = 0
+	getElements()
 	
 
 
@@ -39,24 +40,14 @@ func _on_timer_timeout() -> void:
 	getCoinRate()
 	if coins < coinLimit:
 		coins += coinRate
+		print("Nessie coins: " + str(coins))
 		updateCoins()
 	else:
 		pass
 
 
-func instCryptid(name, branch):
-	name = wendigo.instantiate()
-	name.position = Vector2(192,160)
-	get_node("/root/" + branch).add_child(name)
-	getElements()
-
-
-func _on_make_crytpid_pressed() -> void:
-	instCryptid("Wendigo1", "MainMap/WendigoBiome")
-	$MakeCryptid.visible = false
-
 func updateCoins():
-	$WendigoCoins.text = str(coins)
+	$NessieCoins.text = str(coins)
 
 
 func _on_coins_button_body_entered(body: Node2D) -> void:

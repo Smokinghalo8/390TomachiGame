@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpns8hicevg8t"]
+
+[ext_resource type="Texture2D" uid="uid://pg02fcp56h8u" path="res://loch ness.png" id="1_03lhg"]
+[ext_resource type="Script" path="res://nessie.gd" id="2_ymujy"]
+
+[node name="Nessie" type="Sprite2D" groups=["cryptid"]]
+process_mode = 4
+position = Vector2(22, 22)
+scale = Vector2(1.375, 1.34375)
+texture = ExtResource("1_03lhg")
+script = ExtResource("2_ymujy")
+
+[node name="HealthTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="moveTimer" type="Timer" parent="."]
+
+[node name="directionTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="moveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="directionTimer" to="." method="_on_direction_timer_timeout"]
